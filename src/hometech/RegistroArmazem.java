@@ -21,7 +21,7 @@ public class RegistroArmazem extends JFrame implements ActionListener {
     }
 
     private void createTable() {
-        String[] columns = {"Nome", "Numero"};
+        String[] columns = {"Nome", "Número"};
         model = new DefaultTableModel(columns, 0);
         tableComponentes = new JTable(model);
     }
@@ -55,7 +55,7 @@ public class RegistroArmazem extends JFrame implements ActionListener {
     }
 
     private void setFrameSettings() {
-        setTitle("Registro de Componentes");
+        setTitle("Registro de Armazém");
         setSize(500, 300);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
