@@ -162,7 +162,7 @@ public class ClienteView extends javax.swing.JFrame {
     public static void main(String [] args) {
         ClienteView view = new ClienteView();
         ControllerCliente cCliente = new ControllerCliente(view);
-       }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
