@@ -6,8 +6,8 @@ package projectohometech.model;
 
 import projectohometech.model.Cliente;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import projectohometech.ConexaoBD;
 
 /**
@@ -22,7 +22,7 @@ public class ClienteDAO {
     
     //metodo de cadastro
     public void cadastro(Cliente cliente){
-        String sql ="INSERT into cliente(nome, contacto, endereco) values(?,?,?)";
+        String sql ="INSERT into cliente(nome, numero, endereco) values(?,?,?)";
         try{
             con = conexao.conectar();
             ps = con.prepareStatement(sql);
@@ -32,29 +32,30 @@ public class ClienteDAO {
             ps.setString(3,cliente.getEndereco());
             ps.executeUpdate();
         }catch(SQLException e){
-            System.out.println("Erro de Cadastro "+e);}
+            System.out.println("Erro de Cadastro "+e);
+        }
     }
     
     //Metodo de listagem
     public List listarCliente(){
         String sql = "SELECT * from cliente";
-        List<Cliente> lista = new ArrayList<>();
+        Vector <Cliente> lista = new Vector();
         
         try{
-        con = conexao.conectar();
-        ps = con.prepareStatement(sql);
-        rs = ps.executeQuery();
-        
-        while(rs.next()){
-            
-        Cliente c = new Cliente();
-        c.setId(rs.getInt(1));
-        c.setNome(rs.getString(2));
-        c.setEndereco(rs.getString(3));
-        c.setContacto(rs.getString(4));
-        
-        lista.add(c);
-        }
+            con = conexao.conectar();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while(rs.next()){
+
+            Cliente c = new Cliente();
+            c.setId(rs.getInt(1));
+            c.setNome(rs.getString(2));
+            c.setEndereco(rs.getString(3));
+            c.setContacto(rs.getString(4));
+
+            lista.add(c);
+            }
         }catch(SQLException e){
             System.out.println("Erro de listagem "+e);
         }

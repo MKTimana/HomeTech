@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package projectohometech;
 
 /**
@@ -16,16 +13,15 @@ import java.sql.SQLException;
 public class ConexaoBD {
     
     Connection con;
-   String driver = "com.mysql.cj.jdbc.Driver";
-    String db = "homeTech";
-    String url = "jdbc:mysql://localhost:3306/"+db+"?useSSL=false&serverTimeZone=UTC";
-    String user = "root";
-    String pass= "";
+    private final String driver = "com.mysql.cj.jdbc.Driver";
+    private final String url = "jdbc:mysql://localhost:3306/homeTech";
+    private final String user = "root";
+    private final String password = "1234";
     
     public Connection conectar(){
         try{
             Class.forName(driver);
-            con = DriverManager.getConnection(url,user,pass);
+            con = DriverManager.getConnection(url,user,password);
             System.out.println("Conectado!");
         }catch(ClassNotFoundException|SQLException e){
             System.out.println("Erro de conexao "+e);

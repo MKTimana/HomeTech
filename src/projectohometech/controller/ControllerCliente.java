@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +21,7 @@ import projectohometech.model.Cliente;
  *
  * @author mkt
  */
-public class ControllerCliente implements ActionListener{
+public final class ControllerCliente implements ActionListener{
     //Instancias
     Cliente cliente = new Cliente();
     ClienteDAO c = new ClienteDAO();
@@ -58,10 +58,10 @@ public class ControllerCliente implements ActionListener{
 private void listarTabela(){
         String [] titulos = new String[]{"ID","Nome","Endereço","Contacto"};
         dtm = new DefaultTableModel(titulos,0);
-        List<Cliente> listaCliente = c.listarCliente();
+        Vector <Cliente> listaCliente = (Vector <Cliente>) c.listarCliente();
         
         for (Cliente cli : listaCliente) {
-            dtm.addRow(new Object[]{cli.getId(),cli.getNome(),cli.getEndereco(),cli.getContacto()});
+            dtm.addRow(new Object[]{cli.getId(),cli.getNome(),cli.getContacto(),cli.getEndereco()});
         }
         view.getTblClientes().setModel(dtm);
         view.getTblClientes().setPreferredSize(new Dimension(350,dtm.getRowCount() * 16));
@@ -128,10 +128,23 @@ private void listarTabela(){
         }
     }
     
+    private void actualizarCliente(){
+        
+    
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == view.getBtnCadastro()){
         cadastrarCliente();
+        }
+        
+        if(e.getSource() == view.getBtnLimpar()){
+            limparCampos();
+        }
+        
+        if(e.getSource() == view.getBtnActualizar()){
+            actualizarCliente();
         }
     }
     
