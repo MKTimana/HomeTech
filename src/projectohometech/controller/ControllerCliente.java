@@ -40,6 +40,10 @@ public final class ControllerCliente implements ActionListener{
         accoes();
         listarTabela();
     }
+
+    ControllerCliente() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     public void accoes(){
         view.getBtnCadastro().addActionListener(this);
@@ -97,6 +101,10 @@ private void listarTabela(){
             System.out.println("Erro ao carregar dados "+e);
         }
         return false;
+    }
+    
+    public boolean getCarregarDados(){
+        return carregarDados();
     }
     
     private void limparCampos(){

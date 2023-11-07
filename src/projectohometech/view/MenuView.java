@@ -1,8 +1,14 @@
+package projectohometech.view;
+
+import javax.swing.JButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Menu;
+//package Menu;
 
 /**
  *
@@ -105,50 +111,31 @@ public class MenuView extends javax.swing.JFrame {
 
     private void btn_produtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_produtoActionPerformed
         // TODO add your handling code here:
-        new Produto();
+//        new ProdutoView();
     }//GEN-LAST:event_btn_produtoActionPerformed
 
     private void btn_armazemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_armazemActionPerformed
         // TODO add your handling code here:
-        new Armazem();
+       ArmazemView armazem = new ArmazemView();
+       armazem.setVisible(true);
     }//GEN-LAST:event_btn_armazemActionPerformed
 
     private void btn_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clienteActionPerformed
         // TODO add your handling code here:
-        new Cliente();
+        ClienteView cliente = new ClienteView();
+        cliente.setVisible(true);
     }//GEN-LAST:event_btn_clienteActionPerformed
 
     private void btn_fornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fornecedorActionPerformed
-        // TODO add your handling code here:
-        new Fornecedor();
+//        // TODO add your handling code here:
+//        new Fornecedor();
     }//GEN-LAST:event_btn_fornecedorActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        MenuView view = new MenuView();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -167,4 +154,34 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtn_armazem() {
+        return btn_armazem;
+    }
+
+    public JButton getBtn_cliente() {
+        return btn_cliente;
+    }
+
+    public JButton getBtn_fornecedor() {
+        return btn_fornecedor;
+    }
+
+    public JButton getBtn_produto() {
+        return btn_produto;
+    }
+
+    public JMenu getjMenu1() {
+        return jMenu1;
+    }
+
+    public JMenu getjMenu2() {
+        return jMenu2;
+    }
+
+    public JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+
 }
