@@ -4,82 +4,104 @@
  */
 package projectohometech.model;
 
-import projectohometech.view.ProdutoView;
-import projectohometech.model.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 import projectohometech.ConexaoBD;
-
 
 /**
  *
  * @author USER
  */
 public class ProdutoDAO {
+
     ConexaoBD conexao = new ConexaoBD(); //Instancia de conexao da BD
     Connection con;
     PreparedStatement ps;
     ResultSet rs;
-    ProdutoView view = new ProdutoView();
-    
+
     //metodo de cadastro
-    public void cadastro(Produto produto){
-        String sql ="INSERT INTO produtos (stockminimo, quantidade, nome) VALUES (?, ?, ?)";
-        String stock =view.getTf_stock().getText();
-        String quant =view.getTf_quantidade().getText();
-        String nome =view.getTf_nome().getText();
-        try{
+    public void cadastro(Produto produto) {
+        String sql = "INSERT into produtos (stockminimo, quantidade, nome) values(?,?,?)";
+        try {
             con = conexao.conectar();
             ps = con.prepareStatement(sql);
-            
-            ps.setString(1,stock);
-            ps.setString(2,quant);
-            ps.setString(3,nome);
-            ps.executeUpdate();
-            
-        }catch(SQLException e){
-            System.out.println("Erro de Cadastro "+e);
-        }
-        
-                    listarProdutos();
 
+            ps.setString(1, produto.getStock());
+            ps.setString(2, produto.getQuantidade());
+            ps.setString(3, produto.getNome());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Erro de Cadastro " + e);
+        }
     }
-    
+
     //Metodo de listagem
-    public Vector listarProdutos(){
+    public List listarCliente() {
         String sql = "SELECT * from produtos";
-        Vector <Produto> lista = new Vector();
-         DefaultTableModel dtm = new DefaultTableModel();
-         view.getTableProdutos().setModel(dtm);
-        try{
+        Vector<Produto> lista = new Vector();
+
+        try {
             con = conexao.conectar();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
 
-            while(rs.next()){
+            while (rs.next()) {
 
-                Produto a = new Produto();
-                a.setId(rs.getInt(1));
-                a.setStock(rs.getString(2));
-                a.setQuantidade(rs.getString(3));
-                a.setNome(rs.getString(4));  
-                int id =rs.getInt(1); 
-                int stock = rs.getInt(2);
-                int quant =rs.getInt(3);
-                String nome =rs.getString(4);
-                dtm.addRow(new Object[] { id, stock, quant, nome });
-                //table_model.addRow(new Object[] { id, nome, preco, quantidade });
-                lista.add(a);
+                Produto p = new Produto();
+                p.setId(rs.getInt(1));
+                p.setStock(rs.getString(2));
+                p.setQuantidade(rs.getString(3));
+                p.setNome(rs.getString(4));
+
+                lista.add(p);
             }
-        } catch(SQLException e) {
-            System.out.println("Erro de listagem "+e);
+        } catch (SQLException e) {
+            System.out.println("Erro de listagem " + e);
         }
-       return lista;
+        return lista;
     }
-    
-    
+
+    public void excluir(String nome) {
+        ///
+
+        try {
+            final String query = "DELETE FROM produtos WHERE nome = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, nome);
+
+            preparedStatement.executeUpdate();
+            System.out.println("Removido com sucesso");
+            con.close();
+            preparedStatement.close();
+
+            listarCliente();
+
+        } catch (SQLException | NumberFormatException e) {
+            System.out.println("Erro de Cadastro " + e);
+        }
+
+    }
+
+    public boolean pesquisar(String nome) {
+        String sql = "SELECT * from produtos WHERE nome=?";
+        Vector<Produto> lista = new Vector();
+
+        try {
+            con = conexao.conectar();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, nome);
+            rs = ps.executeQuery();
+            return true;
+        } catch (SQLException e) {
+
+            System.out.println("Erro de pesquisa " + e);
+        }
+        return true;
+    }
 }

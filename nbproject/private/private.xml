@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/USER/OneDrive/Documents/NetBeansProjects/Projectos/HomeTech/src/projectohometech/view/ClienteView.java</file>
+            <file>file:/C:/Users/USER/OneDrive/Documents/NetBeansProjects/Projectos/HomeTech/src/projectohometech/controller/ControllerProdutos.java</file>
+            <file>file:/C:/Users/USER/OneDrive/Documents/NetBeansProjects/Projectos/HomeTech/src/projectohometech/model/Produto.java</file>
+            <file>file:/C:/Users/USER/OneDrive/Documents/NetBeansProjects/Projectos/HomeTech/src/projectohometech/model/ProdutoDAO.java</file>
+            <file>file:/C:/Users/USER/OneDrive/Documents/NetBeansProjects/Projectos/HomeTech/src/projectohometech/view/ProdutoView.java</file>
         </group>
     </open-files>
 </project-private>

@@ -18,7 +18,7 @@ public class ArmazemDAO {
     
     //metodo de cadastro
     public void cadastro(Armazem armazem){
-        String sql ="INSERT into armazem(nome, endereco) values(?,?)";
+        String sql ="INSERT into armazem (nome, endereco) values(?,?)";
         try{
             con = conexao.conectar();
             ps = con.prepareStatement(sql);
