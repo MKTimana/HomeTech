@@ -24,7 +24,7 @@ public class ArmazemDAO {
             ps = con.prepareStatement(sql);
             
             ps.setString(1,armazem.getNome());
-            ps.setString(3,armazem.getEndereco());
+            ps.setString(2,armazem.getEndereco());
             ps.executeUpdate();
         }catch(SQLException e){
             System.out.println("Erro de Cadastro "+e);

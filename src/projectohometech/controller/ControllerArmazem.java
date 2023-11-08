@@ -35,7 +35,7 @@ public class ControllerArmazem implements ActionListener{
         listarTabela();
     }
     
-    public void accoes(){
+    public final void accoes(){
         view.getBtnCadastrar().addActionListener(this);
         view.getBtnActualizar().addActionListener(this);
         view.getBtnRemover().addActionListener(this);
@@ -65,7 +65,6 @@ public class ControllerArmazem implements ActionListener{
     private void preencherCampos(MouseEvent e){
         JTable target = (JTable) e.getSource();
         
-        view.getTxtId().setText(view.getTblArmazens().getModel().getValueAt(target.getSelectedRow(), 0).toString());
         view.getTxtNome().setText(view.getTblArmazens().getModel().getValueAt(target.getSelectedRow(), 1).toString());
         view.getTxtEndereco().setText(view.getTblArmazens().getModel().getValueAt(target.getSelectedRow(), 2).toString());
     }
@@ -123,6 +122,10 @@ public class ControllerArmazem implements ActionListener{
         if(e.getSource() == view.getBtnCadastrar()){
             cadastrarArmazem();
         }
+        if(e.getSource() == view.getBtnLimpar()){
+            limparCampos();
+        }
     }
+    
     
 }
