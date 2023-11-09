@@ -30,7 +30,7 @@ public final class ControllerCliente implements ActionListener{
     DefaultTableModel dtm = new DefaultTableModel();
     
     //Variaveis globais
-    private int id;
+    private int id = 0 ;
     private String nome;
     private String contacto;
     private String endereco;

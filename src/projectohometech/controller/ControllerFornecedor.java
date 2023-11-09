@@ -29,7 +29,7 @@ public class ControllerFornecedor implements ActionListener{
     FornecedorView view = new FornecedorView();
     DefaultTableModel dtm = new DefaultTableModel();
     
-    private int id;
+    private int id = 0;
     private String nome;
     private int nuit;
     
@@ -43,6 +43,7 @@ public class ControllerFornecedor implements ActionListener{
     public void accoes(){
         view.getBtnCadastrar().addActionListener(this);
         view.getBtnActualizar().addActionListener(this);
+        view.getBtnApagar().addActionListener(this);
         view.getTblFornecedores().addMouseListener(new MouseAdapter(){
         
             @Override
@@ -148,9 +149,8 @@ public class ControllerFornecedor implements ActionListener{
             if(id != 0){
                 f.apagar(id);
                 JOptionPane.showMessageDialog(null, "Apagado com sucesso");
-  
             }
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null,"Erro ao apagar o fornecedor","Erro de cadastroo",JOptionPane.ERROR_MESSAGE);
             System.out.println("Erro ao apagar o fornecedor "+e);
         }finally{
@@ -165,6 +165,9 @@ public class ControllerFornecedor implements ActionListener{
        
        if(e.getSource() == view.getBtnActualizar()){
            actualizarFornecedor();
+       }
+       if(e.getSource() == view.getBtnApagar()){
+           apagarFornecedor();
        }
     } 
     

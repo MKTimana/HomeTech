@@ -26,7 +26,7 @@ public class ControllerArmazem implements ActionListener {
     ArmazemView view = new ArmazemView();
     DefaultTableModel dtm = new DefaultTableModel();
 
-    private int id;
+    private int id = 0;
     private String nome;
     private String endereco;
     private String contacto;
